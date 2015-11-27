@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BWf-3c-VEG">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="DlJ-X2-qhe">
+            <objects>
+                <navigationController id="BWf-3c-VEG" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nG5-Bk-G0Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="y6p-pE-daX" kind="relationship" relationship="rootViewController" id="pnS-d7-MtU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nYi-af-X5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="43" y="311"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZrG-5g-qWH">
+            <objects>
+                <viewController id="y6p-pE-daX" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TkS-Fb-ZEe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dcs-Z1-gb3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dpw-uC-oEW">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4eU-MO-Nkb">
+                        <barButtonItem key="leftBarButtonItem" image="schoolListItem" id="utI-yM-ibQ">
+                            <connections>
+                                <action selector="popAction:" destination="y6p-pE-daX" id="Ij3-nM-xnr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3vA-gN-62E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="416" y="311"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="schoolListItem" width="15" height="11"/>
+    </resources>
+</document>

@@ -27,9 +27,9 @@
         [self addTappedGesture];
         self.nameArray = labelArray;
         self.imageArray = imageArray;
-        self.tableCellHeight = 45;
-        
+        self.tableCellHeight = 40;
         [self setTableViewWithPosition:position];
+        self.frame = CGRectMake(0, -_tableView.bounds.size.height-10, KT_UISCREEN_WIDTH, KT_UISCREEN_HEIGHT+_tableView.bounds.size.height+10);
     }
 
     return self;
@@ -38,8 +38,18 @@
 - (void)showView:(BOOL)needShow {
     if (needShow) {
         self.hidden = NO;
+        [UIView animateWithDuration:0.5 animations:^{
+            CGAffineTransform transform = CGAffineTransformMakeTranslation(0,_tableView.bounds.size.height+10);
+            self.transform = transform;
+
+        }];
     } else {
-        self.hidden = YES;
+        [UIView animateWithDuration:0.5 animations:^{
+            CGAffineTransform transform = CGAffineTransformMakeTranslation(0,0);
+            self.transform = transform;
+        } completion:^(BOOL finished) {
+            self.hidden = YES;
+        }];
     }
 }
 
@@ -49,6 +59,18 @@
                                       action:@selector(backgroundTapped)];
     [self addGestureRecognizer:tapped];
 }
+
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, 23, 3);
+    CGContextAddLineToPoint(context, 18.5, 10);
+    CGContextAddLineToPoint(context, 27.5, 10);
+    CGContextClosePath(context);
+    CGContextSetFillColorWithColor(context, [UIColor colorWithWhite:0.2 alpha:1].CGColor);
+    CGContextDrawPath(context, kCGPathFill);
+}
+
 
 - (CGRect)gotTableViewFrame:(KTPopViewPosition)position {
     CGRect tableRect;
@@ -90,7 +112,7 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.imageView.image = [UIImage imageNamed:self.imageArray[indexPath.row]];
     cell.textLabel.text = self.nameArray[indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:15];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }

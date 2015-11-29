@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KTPopViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<KTPopViewDelegate>
 - (IBAction)popAction:(UIBarButtonItem *)sender;
 @property (nonatomic, strong) KTPopViewController *ktPopView;
 
@@ -24,6 +24,11 @@
 
 - (IBAction)popAction:(UIBarButtonItem *)sender {
     [self.view addSubview:self.ktPopView];
+    self.ktPopView.delegate = self;
+}
+
+- (void)KTPopViewDidSelected:(NSInteger)row {
+    NSLog(@"%ld",(long)row);
 }
 
 - (KTPopViewController *)ktPopView {

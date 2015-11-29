@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #include "KTPopViewMacro.h"
+@protocol KTPopViewDelegate<NSObject>
+@required
+- (void)KTPopViewDidSelected:(NSInteger)row;
+@end
+
 
 @interface KTPopViewController : UIView
+@property (nonatomic,weak) id <KTPopViewDelegate> delegate;
 
 typedef enum: NSInteger {
     KTPopViewTopLeft,

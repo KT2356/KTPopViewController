@@ -24,12 +24,16 @@
     self = [super initWithFrame:CGRectMake(0, 0, KT_UISCREEN_WIDTH, KT_UISCREEN_HEIGHT)];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        [self addTappedGesture];
         self.nameArray = labelArray;
         self.imageArray = imageArray;
         self.tableCellHeight = 40;
         [self setTableViewWithPosition:position];
         self.frame = CGRectMake(0, -_tableView.bounds.size.height-10, KT_UISCREEN_WIDTH, KT_UISCREEN_HEIGHT+_tableView.bounds.size.height+10);
+        [self addTappedGesture];
+        
+        UIView *newview = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+        newview.backgroundColor = [UIColor greenColor];
+        [self addSubview:newview];
     }
 
     return self;
@@ -38,13 +42,13 @@
 - (void)showView:(BOOL)needShow {
     if (needShow) {
         self.hidden = NO;
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             CGAffineTransform transform = CGAffineTransformMakeTranslation(0,_tableView.bounds.size.height+10);
             self.transform = transform;
 
         }];
     } else {
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
             CGAffineTransform transform = CGAffineTransformMakeTranslation(0,0);
             self.transform = transform;
         } completion:^(BOOL finished) {
@@ -105,6 +109,13 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.tableCellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if ([self.delegate respondsToSelector:@selector(KTPopViewDidSelected:)]) {
+        [self.delegate KTPopViewDidSelected:indexPath.row];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

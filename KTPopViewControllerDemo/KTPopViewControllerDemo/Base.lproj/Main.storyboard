@@ -34,13 +34,42 @@
                     <view key="view" contentMode="scaleToFill" id="dpw-uC-oEW">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oln-rQ-jla">
+                                <rect key="frame" x="0.0" y="460" width="320" height="44"/>
+                                <animations/>
+                                <items>
+                                    <barButtonItem image="item_battle" id="VtE-0j-vRa">
+                                        <connections>
+                                            <action selector="bottomLeft:" destination="y6p-pE-daX" id="3ht-Gu-ZwS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="EOZ-aK-VFU"/>
+                                    <barButtonItem image="item_school" id="5Cw-Qg-JeA">
+                                        <connections>
+                                            <action selector="bottomRight:" destination="y6p-pE-daX" id="ivU-Af-hKx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oln-rQ-jla" firstAttribute="bottom" secondItem="Dcs-Z1-gb3" secondAttribute="top" id="aNz-xu-fJN"/>
+                            <constraint firstItem="oln-rQ-jla" firstAttribute="leading" secondItem="dpw-uC-oEW" secondAttribute="leading" id="bmL-d0-CCB"/>
+                            <constraint firstAttribute="trailing" secondItem="oln-rQ-jla" secondAttribute="trailing" id="qEi-6v-KcZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4eU-MO-Nkb">
                         <barButtonItem key="leftBarButtonItem" image="schoolListItem" id="utI-yM-ibQ">
                             <connections>
                                 <action selector="popAction:" destination="y6p-pE-daX" id="Ij3-nM-xnr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="item_battle" id="bm9-P1-Uyy">
+                            <connections>
+                                <action selector="topRight:" destination="y6p-pE-daX" id="KmN-yd-Fe4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -52,6 +81,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="item_battle" width="16" height="16"/>
+        <image name="item_school" width="16" height="16"/>
         <image name="schoolListItem" width="15" height="11"/>
     </resources>
 </document>

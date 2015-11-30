@@ -12,7 +12,12 @@
 #define KT_UISCREEN_WIDTH      [UIScreen mainScreen].bounds.size.width
 #define KT_UISCREEN_HEIGHT     [UIScreen mainScreen].bounds.size.height
 
-
+typedef NS_ENUM(NSInteger, KTPopViewPosition) {
+    KTPopViewTopLeft,
+    KTPopViewTopRight,
+    KTPopViewBottomLeft,
+    KTPopViewBottomRight,
+};
 
 
 #endif /* KTPopViewMacro_h */

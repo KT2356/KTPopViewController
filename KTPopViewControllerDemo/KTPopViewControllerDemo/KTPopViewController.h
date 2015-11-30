@@ -8,22 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #include "KTPopViewMacro.h"
+
 @protocol KTPopViewDelegate<NSObject>
 @required
-- (void)KTPopViewDidSelected:(NSInteger)row;
+- (void)KTPopViewDidSelectedTableRow:(NSInteger)row;
 @end
 
 
 @interface KTPopViewController : UIView
 @property (nonatomic,weak) id <KTPopViewDelegate> delegate;
 
-typedef enum: NSInteger {
-    KTPopViewTopLeft,
-    KTPopViewTopRight,
-    KTPopViewBottomLeft,
-    KTPopViewBottomRight,
-} KTPopViewPosition;
-
+//Public methods
 - (instancetype)initWithLableName:(NSArray *)labelArray
                        ImageArray:(NSArray *)imageArray
                          Position:(KTPopViewPosition)position;
